@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/menuFragment">
+    <fragment
+        android:id="@+id/showOneeiFrament"
+        android:name="org.techtown.economyproject.ShowOneeiFrament"
+        android:label="ShowOneeiFrament"
+        tools:layout="@layout/fragment_showoneei"/>
+    <fragment
+        android:id="@+id/explainFrament"
+        android:name="org.techtown.economyproject.ExplainFrament"
+        android:label="ExplainFrament"
+        tools:layout="@layout/fragment_explain"/>
+    <fragment
+        android:id="@+id/marketFrament"
+        android:name="org.techtown.economyproject.MarketFrament"
+        android:label="MarketFrament"
+        tools:layout="@layout/fragment_market"/>
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="org.techtown.economyproject.MenuFragment"
+        android:label="MenuFragment"
+        tools:layout="@layout/fragment_menu">
+        <action
+            android:id="@+id/action_menuFragment_to_ueiFrament"
+            app:destination="@id/ueiFrament" />
+        <action
+            android:id="@+id/action_menuFragment_to_marketFrament"
+            app:destination="@id/marketFrament" />
+        <action
+            android:id="@+id/action_menuFragment_to_oneeiFrament"
+            app:destination="@id/oneeiFrament" />
+        <action
+            android:id="@+id/action_menuFragment_to_explainFrament"
+            app:destination="@id/explainFrament" />
+    </fragment>
+    <fragment
+        android:id="@+id/oneeiFrament"
+        android:name="org.techtown.economyproject.OneeiFrament"
+        android:label="OneeiFrament"
+        tools:layout="@layout/fragment_oneei">
+        <action
+            android:id="@+id/action_oneeiFrament_to_showOneeiFrament"
+            app:destination="@id/showOneeiFrament" />
+    </fragment>
+    <fragment
+        android:id="@+id/ueiFrament"
+        android:name="org.techtown.economyproject.UeiFrament"
+        android:label="UeiFrament"
+        tools:layout="@layout/fragment_uei"/>
+</navigation>
