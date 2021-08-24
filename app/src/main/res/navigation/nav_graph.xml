@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_menuFragment_to_explainFrament"
             app:destination="@id/explainFrament" />
+        <action
+            android:id="@+id/action_menuFragment_to_kospiFragment"
+            app:destination="@id/kospiFragment" />
     </fragment>
     <fragment
         android:id="@+id/oneeiFrament"
@@ -51,4 +54,9 @@
         android:name="org.techtown.economyproject.UeiFrament"
         android:label="UeiFrament"
         tools:layout="@layout/fragment_uei"/>
+    <fragment
+        android:id="@+id/kospiFragment"
+        android:name="org.techtown.economyproject.KospiFragment"
+        android:label="KospiFragment"
+        tools:layout="@layout/fragment_kospi"/>
 </navigation>

@@ -24,14 +24,15 @@ class MenuFragment : Fragment() {
         binding = FragmentMenuBinding.inflate(layoutInflater,container , false);
         binding.menu = this
         return binding.root;
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navController = Navigation.findNavController(view)
+        navController = Navigation.findNavController(view)              //navController 생성성
 
     }
-
+    //버튼 클릭 시 프래그먼트 이동
     fun onNext(view:View){
         when(view.id){
             binding.oneei.id ->{
@@ -47,7 +48,7 @@ class MenuFragment : Fragment() {
                 navController.navigate(R.id.action_menuFragment_to_explainFrament)
             }
             binding.kospi.id->{
-                Toast.makeText(context,"코스피 클릭", Toast.LENGTH_SHORT).show()
+                navController.navigate(R.id.action_menuFragment_to_kospiFragment)
             }
         }
     }
