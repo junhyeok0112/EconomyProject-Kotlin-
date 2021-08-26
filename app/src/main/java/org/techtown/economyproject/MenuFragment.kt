@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import org.techtown.economyproject.databinding.FragmentExplainBinding
 import org.techtown.economyproject.databinding.FragmentMenuBinding
 

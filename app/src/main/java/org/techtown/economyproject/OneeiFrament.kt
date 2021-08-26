@@ -28,11 +28,11 @@ class OneeiFrament : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         navController = Navigation.findNavController(view)
     }
 
     fun onNext(view:View){
         navController.navigate(R.id.action_oneeiFrament_to_showOneeiFrament)
+        //url 등 이용해서 데이터 넘겨줘야함
     }
 }
