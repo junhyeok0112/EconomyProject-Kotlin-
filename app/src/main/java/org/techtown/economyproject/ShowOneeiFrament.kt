@@ -24,6 +24,7 @@ class ShowOneeiFrament : Fragment() {
     lateinit var binding : FragmentShowoneeiBinding
     val adapter:EIndicatorsAdapter = EIndicatorsAdapter()
     val args : ShowOneeiFramentArgs by navArgs()
+    var title:String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,11 +34,11 @@ class ShowOneeiFrament : Fragment() {
         binding = FragmentShowoneeiBinding.inflate(layoutInflater,container , false);
         binding.showoneei = this
         //매개변수로 받은 제목 설정
-        val title= args.title
-        binding.title.text = title
+        title= args.title
+        //binding.title.text = title
 
         //adpater 설정정
-       binding.recyclerView.layoutManager = LinearLayoutManager(activity)
+        binding.recyclerView.layoutManager = LinearLayoutManager(activity)
         binding.recyclerView.adapter = adapter
         callRetrofit()
         adapter.notifyDataSetChanged()

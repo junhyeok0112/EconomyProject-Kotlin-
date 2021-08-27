@@ -12,6 +12,9 @@ interface IndicatorApi {
     fun getIndicator(@Path("start" , encoded = true) start:Int,
                      @Path("end",encoded = true) end:Int) : Call<EIndicators>
 
+    @GET("ans")
+    fun getMarket () :Call<MarketValue>
+
 
 
 }
