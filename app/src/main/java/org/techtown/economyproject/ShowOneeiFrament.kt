@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.techtown.economyproject.databinding.FragmentExplainBinding
 import org.techtown.economyproject.databinding.FragmentMenuBinding
@@ -22,6 +23,7 @@ class ShowOneeiFrament : Fragment() {
     lateinit var navController: NavController
     lateinit var binding : FragmentShowoneeiBinding
     val adapter:EIndicatorsAdapter = EIndicatorsAdapter()
+    val args : ShowOneeiFramentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,25 +31,35 @@ class ShowOneeiFrament : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentShowoneeiBinding.inflate(layoutInflater,container , false);
+        binding.showoneei = this
+        //매개변수로 받은 제목 설정
+        val title= args.title
+        binding.title.text = title
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(activity)
+        //adpater 설정정
+       binding.recyclerView.layoutManager = LinearLayoutManager(activity)
         binding.recyclerView.adapter = adapter
+        callRetrofit()
         adapter.notifyDataSetChanged()
 
-        callRetrofit()
+
         return binding.root;
     }
 
     //"KeyStatisticList/8YLLJIA5R5RPARXVAFW1/json/kr/{start}/{end}"
     fun callRetrofit(){     //retrofit 호출 함수
+        val start = args.startNum.toInt()
+        val end = args.endNum.toInt()
         Log.d("진입" , "callRetrofit 진입")
         val retrofit = RetrofitApi.getInstnace()
-        var indicatorApi:IndicatorApi? = retrofit.create(IndicatorApi::class.java) //retrofit 객체 사용해서 interface갖는 객체생성
-        indicatorApi?.getIndicator(1,100)?.enqueue(object : Callback<EIndicators> {
+        val indicatorApi:IndicatorApi? = retrofit.create(IndicatorApi::class.java) //retrofit 객체 사용해서 interface갖는 객체생성
+        indicatorApi?.getIndicator(start,end)?.enqueue(object : Callback<EIndicators> {
             //파라미터 전달하고 결과는 Callback으로 받음 -> 우리가 정의한 거
             override fun onResponse(call: Call<EIndicators>, response: Response<EIndicators>) {
                 //response로 요청한 데이터에 접근가능 response?.body()?.* 의 형식으로
-                Log.d("성공","성공 : ${response.body()?.KeyStatisticList?.list_total_count}")
+                adapter.items = response.body()?.KeyStatisticList?.row!!
+                Log.d("성공","성공 : ${response.body()?.KeyStatisticList?.row?.size}")
+                adapter.notifyDataSetChanged()
 
             }
 

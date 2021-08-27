@@ -8,7 +8,21 @@
         android:id="@+id/showOneeiFrament"
         android:name="org.techtown.economyproject.ShowOneeiFrament"
         android:label="ShowOneeiFrament"
-        tools:layout="@layout/fragment_showoneei"/>
+        tools:layout="@layout/fragment_showoneei">
+        <argument
+            android:name="startNum"
+            app:argType="integer"
+            android:defaultValue="1" />
+        <argument
+            android:name="endNum"
+            app:argType="integer"
+            android:defaultValue="100" />
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue='""' />
+    </fragment>
+
     <fragment
         android:id="@+id/explainFrament"
         android:name="org.techtown.economyproject.ExplainFrament"
@@ -48,6 +62,10 @@
         <action
             android:id="@+id/action_oneeiFrament_to_showOneeiFrament"
             app:destination="@id/showOneeiFrament" />
+        <action
+            android:id="@+id/action_oneeiFrament_to_menuFragment"
+            app:destination="@id/menuFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/ueiFrament"

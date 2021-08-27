@@ -26,4 +26,8 @@ class EIndicatorsAdapter : RecyclerView.Adapter<EIndicatorsAdapter.ViewHolder>()
     }
 
     override fun getItemCount() = items.size
+
+    fun addItem(item : EIndicatorsResult?){
+        items.add(item!!)
+    }
 }
