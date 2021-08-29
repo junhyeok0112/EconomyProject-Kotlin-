@@ -19,7 +19,7 @@ class KospiFragment : Fragment() , onKeyBackPressedListener {
     lateinit var binding :FragmentKospiBinding
 
 
-    var url = "https://naver.com"
+    var url = "https://finance.naver.com/sise/sise_index.nhn?code=KPI200"
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreateView(

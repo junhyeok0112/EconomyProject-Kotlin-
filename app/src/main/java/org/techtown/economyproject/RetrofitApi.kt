@@ -6,6 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitApi {        //Retrofit 객체 생성
     private var instance : Retrofit? = null
     private var marketInstance: Retrofit? = null        //instance 하나 쓰면 먼저 호출한 거의 instance를 다음거 쓸때 재활용하므로오류남
+    private var sixInstance : Retrofit? = null
     //따라서 인스턴스 2개 설정해주어야함
 
     fun getInstnace() : Retrofit {
@@ -26,6 +27,16 @@ object RetrofitApi {        //Retrofit 객체 생성
                 .build()
         }
         return marketInstance!!
+    }
+
+    fun getSix() :Retrofit{
+        if(sixInstance == null){
+            sixInstance = Retrofit.Builder()
+                .baseUrl("https://ecos.bok.or.kr/api/StatisticSearch/8YLLJIA5R5RPARXVAFW1/json/kr/1/12/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+        }
+        return sixInstance!!
     }
 
 }

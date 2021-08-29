@@ -7,13 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import org.techtown.economyproject.databinding.FragmentExplainBinding
 import org.techtown.economyproject.databinding.FragmentMarketBinding
-import org.techtown.economyproject.databinding.FragmentMenuBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
 
 class MarketFrament : Fragment() {
 
@@ -43,7 +40,15 @@ class MarketFrament : Fragment() {
                 Log.d("MarketValue 성공" , "MarketValue 성공")
                 Log.d("MarketValue 값 ","${response.body()?.Value}" )                //값 가져오기
                 Log.d("MarketValue 값 ","${response.code()}" )
-                result = response.body()?.Value                                     //가져온 값 result 에 넣기
+                val score :Float? = response.body()?.Value?.toFloat()
+                //코틀린은 명시적으로 null을 넣을 수 있는 변수는 없음 . 따라서 null이 들어올만 하면 오류 그래서 nullable 체크
+                score.let{          //null이 아니면실행
+                    if (score!! >= 2.5) {
+                        result = "점수가 2.5이상이면 매수하는게 좋은데 우리가 나온 점수는 ${score} 이므로 매수하는 것이 좋다\n"
+                    } else {
+                        result = "점수가 2.5이상이면 매수하는게 좋은데 우리가 나온 점수는 ${score} 이므로 매수하지 않는 것이 좋다\n"
+                    }
+                }
                 binding.invalidateAll()                                            //새로고침
             }
 
